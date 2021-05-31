@@ -8,18 +8,20 @@ import {
   Switch,
 } from "react-router-dom";
 import routes from "./routes/Routes";
-import AppProvider from "./AppProvider";
+import AppProvider from './AppProvider.js';
+// import AppProvider from "./AppProvider";
 
 
 function App() {
   return (
     <div className="App">
+          <AppProvider>
       <Header></Header>  
         <Router>
           <Switch>
             {routes.map((route) => (
               <Route
-                Key={route.path}
+                // Key= {route.path}
                 exact
                 path={route.path}
                 component={route.component}
@@ -27,9 +29,12 @@ function App() {
             ))}
           </Switch>
       </Router> 
-      <Main></Main>   
+      {/* <Main></Main>    */}
+      </AppProvider>
     </div>
+ 
   );
 }
+export default App;
 
 

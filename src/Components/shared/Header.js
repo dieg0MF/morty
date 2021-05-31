@@ -1,8 +1,14 @@
-import React ,{useState} from 'react';
+import React ,{useState,useContext} from 'react';
+import { AppContext } from "../../AppProvider";
+import "./Header.css";
+
+import home from '../../assets/images/home.jpeg'
+import user from '../../assets/images/user.jpeg'
 
 export default function Header() {
 
-	const [search, setSearch] = useState('');
+
+	const { search, setSearch } = useContext(AppContext);
 
 	const haddleChange = (e)=>{
 		setSearch(e.target.value);	
@@ -15,9 +21,12 @@ export default function Header() {
 
 	return (
 		<div className="container">
-			<img src="./assets/home.png" alt="home"/>
+			<div className='containerHeader'>
+			<img src={home} alt="home"/>
 			<h1>Rick and Morty</h1>
-			<img src="./assets/account.png" alt="home"/>
+			<img src={user} alt="home"/>
+			</div>
+
 			<form onSubmit={haddleSubmit}>
 				<input type="text" value={search} onChange={haddleChange}/>
 			</form>

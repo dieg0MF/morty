@@ -1,0 +1,28 @@
+.container{
+    width: 100%;
+    background-color: aqua;
+    
+}
+.containerHeader{
+    display: flex;
+    background-color: antiquewhite;
+    width: 100%;
+    justify-content: space-between;
+    
+}
+.containerHeader img{
+    width: 100px;
+    height: 100px;
+}
+.container form {
+    margin: auto;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+}
+.container form input{
+    margin: auto;
+    width: 30%;
+    height: 20px;
+    padding-left: 2em;
+}
