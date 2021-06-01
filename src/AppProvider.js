@@ -5,6 +5,8 @@ export const AppContext = React.createContext();
 export default function AppProvider({ children }) {
   const [showModal, setShowModal] = useState(false);
   const [search, setSearch] = useState('');
+  const [episodes, setEpisodes] = useState([]);
+  const [episode, setEpisode] = useState({});
 
 
   return (
@@ -13,7 +15,12 @@ export default function AppProvider({ children }) {
         showModal,
         setShowModal,
         search,
-        setSearch
+        setSearch,
+        episodes,
+        setEpisodes,
+        episode,
+        setEpisode
+
 
       
       }}

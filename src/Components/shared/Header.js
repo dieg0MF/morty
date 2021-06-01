@@ -4,10 +4,12 @@ import "./Header.css";
 
 import home from '../../assets/images/home.jpeg'
 import user from '../../assets/images/user.jpeg'
+import { HttpFetchSearch } from '../../Helpers/HttpFetch';
+import { Link } from 'react-router-dom';
 
-export default function Header() {
-
-
+export default function Header(props) {
+	const { episode, setEpisode } = useContext(AppContext);
+	const { episodes, setEpisodes } = useContext(AppContext);
 	const { search, setSearch } = useContext(AppContext);
 
 	const haddleChange = (e)=>{
@@ -17,6 +19,18 @@ export default function Header() {
 	const haddleSubmit =(e)=>{
 		e.preventDefault();
 		console.log(search)
+		HttpFetchSearch(search)
+		.then(json=>{
+			setEpisode(json)
+			console.log('search',json)
+			return json
+			
+		
+		})
+				
+			// .then(() =>{
+			// 	props.history.push("/search");
+			// })
 	}
 
 	return (
@@ -24,12 +38,14 @@ export default function Header() {
 			<div className='containerHeader'>
 			<img src={home} alt="home"/>
 			<h1>Rick and Morty</h1>
-			<img src={user} alt="home"/>
+			<Link to='/search'><img src={user} alt="home"/>	</Link>
 			</div>
 
 			<form onSubmit={haddleSubmit}>
 				<input type="text" value={search} onChange={haddleChange}/>
 			</form>
+		
+		
 		</div>
 	)
 }

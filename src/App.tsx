@@ -16,8 +16,9 @@ function App() {
   return (
     <div className="App">
           <AppProvider>
-      <Header></Header>  
+       
         <Router>
+        <Header></Header> 
           <Switch>
             {routes.map((route) => (
               <Route
