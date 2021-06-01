@@ -8,11 +8,20 @@
     background-color: antiquewhite;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
     
 }
 .containerHeader img{
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
+   margin-left: 5em;
+   margin-right: 5em;
+}
+.containerHeader img{
+font-size: 16px;
+line-height: 18.75px;
+
+
 }
 .container form {
     margin: auto;
@@ -23,6 +32,10 @@
 .container form input{
     margin: auto;
     width: 30%;
-    height: 20px;
+    height: 40px;
     padding-left: 2em;
+}
+.container form input::placeholder{
+    font-size: 16px;
+
 }

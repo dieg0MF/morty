@@ -2,6 +2,7 @@ import React ,{useState, useEffect,useContext} from 'react';
 import { AppContext } from "../../AppProvider";
 import {HttpFetch} from '../../Helpers/HttpFetch.js';
 import Cards from '../shared/Cards.js';
+import './Main.css'
 
 
 export default function Main() {
@@ -21,9 +22,9 @@ export default function Main() {
 
 
 	return (
-		<div>
+		<div className='CardsContainer'>
 			{
-				episodes !== undefined  && episodes.length >1 ? (episodes.map((element,index)=><Cards 
+				episodes !== undefined   ? (episodes.map((element,index)=><Cards 
 					episodeName={element.name}
 					image={`https://rickandmortyapi.com/api/character/avatar/${index}.jpeg`}
 					date={element.air_date}

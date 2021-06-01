@@ -1,16 +1,22 @@
 import React ,{useState,useContext} from 'react';
+import { Link, useHistory } from 'react-router-dom';
+
 import { AppContext } from "../../AppProvider";
 import "./Header.css";
-
-import home from '../../assets/images/home.jpeg'
-import user from '../../assets/images/user.jpeg'
 import { HttpFetchSearch } from '../../Helpers/HttpFetch';
-import { Link } from 'react-router-dom';
+
+
+
+import home from '../../assets/images/homeIcon.jpg'
+import user from '../../assets/images/user.jpeg'
+
 
 export default function Header(props) {
 	const { episode, setEpisode } = useContext(AppContext);
 	const { episodes, setEpisodes } = useContext(AppContext);
 	const { search, setSearch } = useContext(AppContext);
+
+	const history= useHistory();
 
 	const haddleChange = (e)=>{
 		setSearch(e.target.value);	
@@ -22,11 +28,16 @@ export default function Header(props) {
 		HttpFetchSearch(search)
 		.then(json=>{
 			setEpisode(json)
-			console.log('search',json)
+			console.log('search',json.error)
 			return json
 			
 		
 		})
+		.then(() =>{
+			history.push('/search')
+			setSearch('')
+		})
+		
 				
 			// .then(() =>{
 			// 	props.history.push("/search");
@@ -36,13 +47,13 @@ export default function Header(props) {
 	return (
 		<div className="container">
 			<div className='containerHeader'>
-			<img src={home} alt="home"/>
+			<Link to='/'><img src={home} alt="home"/></Link>
 			<h1>Rick and Morty</h1>
-			<Link to='/search'><img src={user} alt="home"/>	</Link>
+			<img src={user} alt="home"/>	
 			</div>
 
 			<form onSubmit={haddleSubmit}>
-				<input type="text" value={search} onChange={haddleChange}/>
+				<input type="text" value={search} onChange={haddleChange} placeholder='Search'/>
 			</form>
 		
 		

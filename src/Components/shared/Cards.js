@@ -1,14 +1,15 @@
 import React from 'react';
+import './Card.css'
 
 
 export default function Cards({episodeName,image,date, key}) {
 
 	return (
-		<div key={key}>
+		<div className='CardContainer' key={key}>
 			<img src={image} alt=""/>
 			<div className="">
-				<span>{episodeName}</span>
-				<span><b>Created:</b>{date}</span>
+				<h4>{episodeName}</h4>
+				<p><b>Created:</b>{date}</p>
 			</div>
 						
 		</div>
