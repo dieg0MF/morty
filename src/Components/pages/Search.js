@@ -1,37 +1,35 @@
-import React ,{useState, useEffect,useContext} from 'react';
+import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../AppProvider";
-import {HttpFetch} from '../../Helpers/HttpFetch.js';
-import Cards from '../shared/Cards.js';
-import './Search.css'
+import { HttpFetch } from "../../Helpers/HttpFetch.js";
+import Cards from "../shared/Cards.js";
+import "./Search.css";
 
-import notFound from '../../assets/images/NotFoundImage.png'
-
+import notFound from "../../assets/images/NotFoundImage.png";
 
 export default function Search() {
-	const {episode, setEpisode} = useContext(AppContext);
-    const { search, setSearch } = useContext(AppContext);
+  const { episode, setEpisode } = useContext(AppContext);
+  
 
-console.log('episode',episode)
+  console.log("episode", episode);
 
-    return (
-		<div className='ContainerSearch'>
-			{
-				episode.id !== undefined  ? 
-                <Cards 
-					episodeName={episode.name}
-					image={`https://rickandmortyapi.com/api/character/avatar/1.jpeg`}
-					date={episode.air_date}
-					key={episode.id}></Cards>: 
+  let load;
+  if (episode.id !== undefined) {
+    load = (
+      <Cards
+        episodeName={episode.name}
+        image={`https://rickandmortyapi.com/api/character/avatar/${episode.id}.jpeg`}
+        date={episode.air_date}
+        key={episode.id}
+      ></Cards>
+    );
+  } else {
+    load = (
+      <div className="notFoundContainer">
+        <img src={notFound} alt="notFound"></img>
+        <span>Not Found</span>
+      </div>
+    );
+  }
 
-                    <div className='notFoundContainer'>
-                        <img src={notFound} alt='notFound'></img>
-				<span>Not Found</span>
-                </div>
-            }
-			
-
-			
-		</div>
-	)
-
+  return <div className="ContainerSearch">{load}</div>;
 }

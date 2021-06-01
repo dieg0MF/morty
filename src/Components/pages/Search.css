@@ -3,6 +3,8 @@
     display: flex;
     justify-content: center;
     background-color: chocolate;
+    /* height: 86vh; */
+    overflow:hidden;
 }
 
 .notFoundContainer{
