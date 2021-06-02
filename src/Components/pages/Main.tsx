@@ -1,8 +1,9 @@
 import React ,{useState, useEffect,useContext} from 'react';
-import { AppContext } from "../../AppProvider";
+import { AppContext } from "../../AppProviderTSX";
 import {HttpFetch} from '../../Helpers/HttpFetch.js';
-import Cards from '../shared/Cards.js';
-import './Main.css'
+import Cards from '../shared/Cards';
+import './Main.css';
+
 
 
 export default function Main() {
@@ -13,7 +14,9 @@ export default function Main() {
 		const getAll = () =>{
 		HttpFetch().then(json=>{
 			setEpisodes(json.results)
+			console.log('ep', json.results)
 			return json})	
+		
 		}
 		getAll()
 	},[])
@@ -26,7 +29,7 @@ export default function Main() {
 			{
 				episodes !== undefined   ? (episodes.map((element,index)=><Cards 
 					episodeName={element.name}
-					image={`https://rickandmortyapi.com/api/character/avatar/${index}.jpeg`}
+					image={`https://rickandmortyapi.com/api/character/avatar/${element.id}.jpeg`}
 					date={element.air_date}
 					key={element.id}></Cards>)): 
 				<span>No se encontro</span>

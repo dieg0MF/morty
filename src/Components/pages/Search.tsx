@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AppContext } from "../../AppProvider";
+import { AppContext } from "../../AppProviderTSX";
 import { HttpFetch } from "../../Helpers/HttpFetch.js";
 import Cards from "../shared/Cards.js";
 import "./Search.css";

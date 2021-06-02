@@ -1,19 +1,19 @@
 import React from 'react';
-import Header from './Components/shared/Header.js';
-import Main from './Components/pages/Main.js';
+import Header from './Components/shared/Header';
+
 import {
   BrowserRouter as Router,
-  Redirect,
+
   Route,
   Switch,
   
 } from "react-router-dom";
 import routes from "./routes/Routes";
-import AppProvider from './AppProvider.js';
+import AppProvider from './AppProviderTSX';
 // import AppProvider from "./AppProvider";
 
 
-function App() {
+function App(): JSX.Element  {
  
   return (
     <div className="App">

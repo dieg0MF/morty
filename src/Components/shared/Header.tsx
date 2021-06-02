@@ -1,7 +1,7 @@
-import React ,{useState,useContext} from 'react';
+import React ,{useContext} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { AppContext } from "../../AppProvider";
+import { AppContext } from "../../AppProviderTSX";
 import "./Header.css";
 import { HttpFetchSearch } from '../../Helpers/HttpFetch';
 
@@ -11,18 +11,18 @@ import home from '../../assets/images/homeIcon.jpg'
 import user from '../../assets/images/user.jpeg'
 
 
-export default function Header(props) {
-	const { episode, setEpisode } = useContext(AppContext);
-	const { episodes, setEpisodes } = useContext(AppContext);
+ const Header=()=> {
+	const {  setEpisode } = useContext(AppContext);
+	
 	const { search, setSearch } = useContext(AppContext);
 
 	const history= useHistory();
 
-	const haddleChange = (e)=>{
-		setSearch(e.target.value);	
+	const haddleChange = (e: React.FormEvent<HTMLInputElement>)=>{
+		setSearch(e.currentTarget.value);	
 	}
 	
-	const haddleSubmit =(e)=>{
+	const haddleSubmit =(e: React.FormEvent<HTMLInputElement>)=>{
 		e.preventDefault();
 		console.log(search)
 		HttpFetchSearch(search)
@@ -49,7 +49,7 @@ export default function Header(props) {
 			<div className='containerHeader'>
 			<Link to='/'><img src={home} alt="home"/></Link>
 			<h1>Rick and Morty</h1>
-			<img src={user} alt="home"/>	
+			<Link to='/account'><img src={user} alt="home"/></Link>	
 			</div>
 
 			<form onSubmit={haddleSubmit}>
@@ -60,3 +60,4 @@ export default function Header(props) {
 		</div>
 	)
 }
+export default Header

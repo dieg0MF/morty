@@ -1,5 +1,6 @@
 
 // import Main from "../Components/pages/Main";
+import Account from "../Components/pages/Account";
 import Main from "../Components/pages/Main";
 import Search from "../Components/pages/Search";
 
@@ -9,6 +10,9 @@ import Search from "../Components/pages/Search";
 	},
 	{ path :'/search',
 	component: Search
+	},
+	{ path :'/account',
+	component: Account
 	}
 ]
 export default routes
